@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cia Launcher</string>
+    <string name="search_apps_hint">Cari aplikasi…</string>
+    <string name="search_all_hint">Cari aplikasi, file, atau pengaturan…</string>
+    <string name="pinned">Pinned</string>
+    <string name="all_apps">Semua &gt;</string>
+    <string name="suggested">Disarankan</string>
+    <string name="more">Lainnya &gt;</string>
+    <string name="tab_all">Semua</string>
+    <string name="tab_social">Sosial</string>
+    <string name="tab_tools">Alat</string>
+    <string name="tab_games">Game</string>
+    <string name="app_subtitle">Aplikasi</string>
+    <string name="app_not_found">Aplikasi tidak ditemukan</string>
+    <string name="pick_app_title">Pilih aplikasi</string>
+    <string name="taskbar_change">Ganti aplikasi</string>
+    <string name="taskbar_reset">Kembalikan default</string>
+    <string name="hide_app">Sembunyikan</string>
+    <string name="hidden_apps_title">Aplikasi tersembunyi</string>
+    <string name="hidden_apps_empty">Tidak ada aplikasi tersembunyi</string>
+    <string name="app_hidden">%1$s disembunyikan</string>
+    <string name="app_unhidden">%1$s ditampilkan kembali</string>
+    <string name="pin_app">Sematkan ke Start</string>
+    <string name="unpin_app">Lepas pin</string>
+    <string name="app_pinned">%1$s disematkan ke Start</string>
+    <string name="app_unpinned">%1$s dilepas dari Start</string>
+    <string name="uninstall_app">Hapus aplikasi</string>
+    <string name="uninstall_confirm_title">Hapus aplikasi?</string>
+    <string name="uninstall_confirm_msg">%1$s akan dihapus dari HP ini.</string>
+    <string name="uninstall">Hapus</string>
+    <string name="no_recent_apps">Belum ada riwayat</string>
+    <string name="power_restart">Mulai ulang</string>
+    <string name="power_shutdown">Matikan</string>
+    <string name="cancel">Batal</string>
+    <string name="power_failed">Gagal — butuh akses root</string>
+    <string name="wallpaper_change">Ganti wallpaper</string>
+    <string name="wallpaper_reset">Kembalikan default</string>
+    <string name="wallpaper_set">Wallpaper diganti</string>
+    <string name="wallpaper_reset_done">Wallpaper dikembalikan ke default</string>
+</resources>

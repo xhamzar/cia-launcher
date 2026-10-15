@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_deep">
+
+    <ImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wallpaper"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="23:58"
+        android:textColor="@color/text_white"
+        android:textSize="96sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="110dp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jum, 10 Oktober"
+        android:textColor="#CCFFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clock"
+        android:layout_marginTop="4dp" />
+
+    <LinearLayout
+        android:id="@+id/taskbar"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_taskbar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_start"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Start"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_windows" />
+
+        <ImageButton
+            android:id="@+id/btn_files"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="File"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_folder" />
+
+        <ImageButton
+            android:id="@+id/btn_chrome"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Chrome"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_chrome" />
+
+        <ImageButton
+            android:id="@+id/btn_camera"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Kamera"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_camera" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

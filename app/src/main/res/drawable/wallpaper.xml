@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="1920dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1920">
+    <!-- night sky -->
+    <path android:pathData="M0,0h1080v1920H0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="540" android:startY="0"
+                android:endX="540" android:endY="1920">
+                <item android:offset="0" android:color="#1A2A4A" />
+                <item android:offset="0.45" android:color="#0C1528" />
+                <item android:offset="0.75" android:color="#070D1B" />
+                <item android:offset="1" android:color="#04070E" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- moon glow -->
+    <path android:pathData="M670,330m-110,0a110,110 0 1,0 220,0a110,110 0 1,0 -220,0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="780" android:centerY="440"
+                android:gradientRadius="230">
+                <item android:offset="0" android:color="#3DDCE8FF" />
+                <item android:offset="1" android:color="#00DCE8FF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- moon -->
+    <path
+        android:pathData="M745,405m-36,0a36,36 0 1,0 72,0a36,36 0 1,0 -72,0"
+        android:fillColor="#E8F1FF"
+        android:fillAlpha="0.9" />
+    <!-- back mountain range -->
+    <path
+        android:pathData="M0,1180L180,860L300,1020L470,720L640,1050L800,880L960,1120L1080,980L1080,1920L0,1920Z"
+        android:fillColor="#0E1830" />
+    <!-- snow cap -->
+    <path
+        android:pathData="M470,720L522,802L470,852L418,802Z"
+        android:fillColor="#4A6FA5"
+        android:fillAlpha="0.55" />
+    <!-- front mountain range -->
+    <path
+        android:pathData="M0,1380L240,1080L420,1300L660,1120L880,1360L1080,1220L1080,1920L0,1920Z"
+        android:fillColor="#080E1D" />
+    <!-- lake -->
+    <path android:pathData="M0,1450h1080v470H0z" android:fillColor="#060B16" />
+    <!-- horizon reflection -->
+    <path
+        android:pathData="M0,1450h1080v70H0z"
+        android:fillColor="#14305A"
+        android:fillAlpha="0.4" />
+    <!-- moon reflection -->
+    <path
+        android:pathData="M730,1520h100v180H730z"
+        android:fillColor="#9FC4FF"
+        android:fillAlpha="0.18" />
+    <!-- tree silhouettes -->
+    <path
+        android:pathData="M0,1920L0,1500L60,1420L90,1520L130,1440L170,1560L170,1920Z"
+        android:fillColor="#04070D" />
+    <path
+        android:pathData="M1080,1920L1080,1480L1020,1400L990,1510L950,1430L910,1550L910,1920Z"
+        android:fillColor="#04070D" />
+</vector>
