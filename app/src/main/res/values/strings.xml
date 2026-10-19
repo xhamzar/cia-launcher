@@ -26,6 +26,7 @@
     <string name="app_pinned">%1$s disematkan ke Start</string>
     <string name="app_unpinned">%1$s dilepas dari Start</string>
     <string name="uninstall_app">Hapus aplikasi</string>
+    <string name="app_info">Informasi aplikasi</string>
     <string name="uninstall_confirm_title">Hapus aplikasi?</string>
     <string name="uninstall_confirm_msg">%1$s akan dihapus dari HP ini.</string>
     <string name="uninstall">Hapus</string>

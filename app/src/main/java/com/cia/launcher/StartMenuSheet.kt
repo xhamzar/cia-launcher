@@ -47,7 +47,7 @@ class StartMenuSheet : BottomSheetDialogFragment() {
         pinnedAdapter = PinnedAdapter(
             emptyList(),
             onClick = { app -> launchApp(app) },
-            onLongClick = { app -> showUnpinMenu(app) }
+            onLongClick = { app -> showAppMenu(app) }
         )
         grid.adapter = pinnedAdapter
 
@@ -113,17 +113,33 @@ class StartMenuSheet : BottomSheetDialogFragment() {
     }
 
     /** Long-press on a pinned app: offer to unpin it. */
-    private fun showUnpinMenu(app: PinnedApp) {
+    /**
+     * Long-press menu on a pinned app: app info (opens system Settings),
+     * unpin from Start, and uninstall (non-system apps only).
+     */
+    private fun showAppMenu(app: PinnedApp) {
         val pkg = app.packageName ?: return
-        AlertDialog.Builder(requireContext(), R.style.Theme_CiaLauncher_Dialog)
-            .setItems(arrayOf(getString(R.string.unpin_app))) { _, _ ->
-                PinnedPrefs.removePin(requireContext(), pkg)
-                loadContent()
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.app_unpinned, app.label),
-                    Toast.LENGTH_SHORT
-                ).show()
+        val ctx = requireContext()
+        val items = mutableListOf<String>()
+        items.add(getString(R.string.app_info))
+        items.add(getString(R.string.unpin_app))
+        if (isUninstallable(ctx, pkg)) items.add(getString(R.string.uninstall_app))
+        AlertDialog.Builder(ctx, R.style.Theme_CiaLauncher_Dialog)
+            .setItems(items.toTypedArray()) { _, which ->
+                when (items[which]) {
+                    getString(R.string.app_info) -> openAppInfo(ctx, pkg)
+                    getString(R.string.unpin_app) -> {
+                        PinnedPrefs.removePin(ctx, pkg)
+                        loadContent()
+                        Toast.makeText(
+                            ctx,
+                            getString(R.string.app_unpinned, app.label),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    getString(R.string.uninstall_app) ->
+                        confirmUninstall(ctx, pkg, app.label)
+                }
             }
             .show()
     }

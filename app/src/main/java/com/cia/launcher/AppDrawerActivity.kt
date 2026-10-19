@@ -1,12 +1,10 @@
 package com.cia.launcher
 
-import android.app.PendingIntent
 import android.app.SearchManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInstaller
 import android.graphics.Color
 import android.net.Uri
@@ -306,6 +304,7 @@ class AppDrawerActivity : AppCompatActivity() {
      */
     private fun showHideMenu(entry: AppEntry) {
         val items = mutableListOf<String>()
+        items.add(getString(R.string.app_info))
         val pinned = PinnedPrefs.isPinned(this, entry.packageName)
         items.add(
             getString(
@@ -314,12 +313,14 @@ class AppDrawerActivity : AppCompatActivity() {
         )
         val canHide = entry.packageName != packageName
         if (canHide) items.add(getString(R.string.hide_app))
-        if (isUninstallable(entry)) items.add(getString(R.string.uninstall_app))
+        if (isUninstallable(this, entry.packageName)) items.add(getString(R.string.uninstall_app))
         AlertDialog.Builder(this, R.style.Theme_CiaLauncher_Dialog)
             .setItems(items.toTypedArray()) { _, which ->
                 val picked = items[which]
                 when {
-                    picked == getString(R.string.uninstall_app) -> confirmUninstall(entry)
+                    picked == getString(R.string.app_info) -> openAppInfo(this, entry.packageName)
+                    picked == getString(R.string.uninstall_app) ->
+                        confirmUninstall(this, entry.packageName, entry.label)
                     picked == getString(R.string.pin_app) -> {
                         PinnedPrefs.addPin(this, entry.packageName)
                         Toast.makeText(
@@ -349,17 +350,6 @@ class AppDrawerActivity : AppCompatActivity() {
                 }
             }
             .show()
-    }
-
-    /** Aplikasi sistem & launcher sendiri tidak bisa dihapus. */
-    private fun isUninstallable(entry: AppEntry): Boolean {
-        if (entry.packageName == packageName) return false
-        return try {
-            val ai = packageManager.getApplicationInfo(entry.packageName, 0)
-            ai.flags and ApplicationInfo.FLAG_SYSTEM == 0
-        } catch (_: Exception) {
-            false
-        }
     }
 
     /** Hasil uninstall via PackageInstaller API milik launcher sendiri. */
@@ -394,35 +384,6 @@ class AppDrawerActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    /**
-     * Konfirmasi lalu hapus aplikasi via PackageInstaller API milik launcher
-     * sendiri (tidak dilempar via intent ke aplikasi lain).
-     */
-    private fun confirmUninstall(entry: AppEntry) {
-        AlertDialog.Builder(this, R.style.Theme_CiaLauncher_Dialog)
-            .setTitle(R.string.uninstall_confirm_title)
-            .setMessage(getString(R.string.uninstall_confirm_msg, entry.label))
-            .setPositiveButton(R.string.uninstall) { _, _ ->
-                try {
-                    val callbackIntent = Intent("$packageName.UNINSTALL_RESULT").apply {
-                        setPackage(packageName)
-                    }
-                    val sender = PendingIntent.getBroadcast(
-                        this,
-                        0,
-                        callbackIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-                    ).intentSender
-                    packageManager.packageInstaller.uninstall(entry.packageName, sender)
-                } catch (e: Exception) {
-                    android.util.Log.e("CiaLauncher", "Uninstall gagal", e)
-                    Toast.makeText(this, "Gagal: ${e.message}", Toast.LENGTH_LONG).show()
-                }
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
     }
 
     /** Eye button: dialog listing hidden apps; tapping one unhides it. */
